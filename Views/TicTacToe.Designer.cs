@@ -15,7 +15,6 @@
 
         private void InitializeComponent() {
             gridLayout = new TableLayoutPanel();
-            //Grid spaces. Buttons are no good here, as the Button's automatic style invalidations mess with the line drawing in controls.
             space1 = new PictureBox();
             space2 = new PictureBox();
             space3 = new PictureBox();
@@ -26,6 +25,8 @@
             space8 = new PictureBox();
             space9 = new PictureBox();
             commentary = new Label();
+            fwBoxLeft = new PictureBox();
+            fwBoxRight = new PictureBox();
             gridLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)space1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)space2).BeginInit();
@@ -36,6 +37,8 @@
             ((System.ComponentModel.ISupportInitialize)space7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)space8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)space9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fwBoxLeft).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fwBoxRight).BeginInit();
             SuspendLayout();
             // 
             // gridLayout
@@ -54,16 +57,15 @@
             gridLayout.Controls.Add(space7, 0, 2);
             gridLayout.Controls.Add(space8, 1, 2);
             gridLayout.Controls.Add(space9, 2, 2);
-            gridLayout.Location = new Point(222, 67);
+            gridLayout.Location = new Point(222, 53);
             gridLayout.Name = "gridLayout";
             gridLayout.RowCount = 4;
             gridLayout.RowStyles.Add(new RowStyle());
             gridLayout.RowStyles.Add(new RowStyle());
             gridLayout.RowStyles.Add(new RowStyle());
             gridLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gridLayout.Size = new Size(370, 368); //It's painful, but trust me, it is correct.
+            gridLayout.Size = new Size(370, 368);
             gridLayout.TabIndex = 0;
-            gridLayout.Paint += gridLayout_Paint;
             // 
             // space1
             // 
@@ -185,12 +187,33 @@
             // commentary
             // 
             commentary.AutoSize = true;
+            commentary.BackColor = SystemColors.Control;
             commentary.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             commentary.Location = new Point(12, 11);
             commentary.Name = "commentary";
             commentary.Size = new Size(143, 38);
             commentary.TabIndex = 2;
             commentary.Text = "It is Xs go.";
+            // 
+            // fwBoxLeft
+            // 
+            fwBoxLeft.BackColor = SystemColors.Control;
+            fwBoxLeft.Location = new Point(0, 0);
+            fwBoxLeft.Name = "fwBoxLeft";
+            fwBoxLeft.Size = new Size(396, 450);
+            fwBoxLeft.TabIndex = 3;
+            fwBoxLeft.TabStop = false;
+            fwBoxLeft.Paint += fwBoxLeft_Paint;
+            // 
+            // fwBoxRight
+            // 
+            fwBoxRight.BackColor = SystemColors.Control;
+            fwBoxRight.Location = new Point(392, 0);
+            fwBoxRight.Name = "fwBoxRight";
+            fwBoxRight.Size = new Size(408, 450);
+            fwBoxRight.TabIndex = 4;
+            fwBoxRight.TabStop = false;
+            fwBoxRight.Paint += fwBoxRight_Paint;
             // 
             // TicTacToe
             // 
@@ -199,9 +222,10 @@
             ClientSize = new Size(800, 450);
             Controls.Add(commentary);
             Controls.Add(gridLayout);
+            Controls.Add(fwBoxLeft);
+            Controls.Add(fwBoxRight);
             Name = "TicTacToe";
             Text = "TicTacToe";
-            Load += TicTacToe_Load;
             gridLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)space1).EndInit();
             ((System.ComponentModel.ISupportInitialize)space2).EndInit();
@@ -212,6 +236,8 @@
             ((System.ComponentModel.ISupportInitialize)space7).EndInit();
             ((System.ComponentModel.ISupportInitialize)space8).EndInit();
             ((System.ComponentModel.ISupportInitialize)space9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fwBoxLeft).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fwBoxRight).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,5 +255,7 @@
         private PictureBox space9;
         private TableLayoutPanel gridLayout;
         private Label commentary;
+        private PictureBox fwBoxLeft;
+        private PictureBox fwBoxRight;
     }
 }
